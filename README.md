@@ -5,4 +5,4 @@ Lists all the neighbors of every polygons in a shapefile.
 
 Usage
 ======
-% python peers.py -html4tags shapefile attribute
+% python peers.py shapefile attribute
