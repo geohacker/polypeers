@@ -50,11 +50,9 @@ for index in range(feature_count):
             for i in range(len(neighbors)-1):
                 neighbor1_boundary = neighbors[i].GetGeometryRef().GetBoundary()
                 neighbor2_boundary = neighbors[i + 1].GetGeometryRef().GetBoundary()
-                if boundary1.Intersection(neighbor1_boundary).Length() > boundary1.Intersection(neighbor2_boundary).Length():
+                if boundary1.Intersection(neighbor1_boundary).Length() < boundary1.Intersection(neighbor2_boundary).Length():
                     sorted = False
-                    hold = neighbors[i + 1]
-                    neighbors[i + 1] = neighbors[i]
-                    neighbors[i] = hold
+                    neighbors[i], neighbors[i + 1] = neighbors[i + 1], neighbors[i]
         for neighbor in neighbors[:5]:
             peers.append(neighbor.GetFieldAsInteger(attribute))
     else:
